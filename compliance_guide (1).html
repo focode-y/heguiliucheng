@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公司合規手冊 | 内部执行文件</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --surface2: #1e2334;
+    --border: #2a3050;
+    --accent: #4f8bff;
+    --accent2: #ff6b35;
+    --accent3: #22d3a5;
+    --warn: #f5a623;
+    --danger: #ff4444;
+    --text: #e8eaf0;
+    --text2: #9aa3bf;
+    --text3: #5c667a;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 40px 0;
+  }
+
+  .sidebar-logo {
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+
+  .sidebar-logo .company {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    font-weight: 500;
+  }
+
+  .sidebar-logo .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 4px;
+  }
+
+  .sidebar-logo .badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 2px 8px;
+    background: rgba(255,68,68,0.15);
+    border: 1px solid rgba(255,68,68,0.3);
+    border-radius: 3px;
+    font-size: 10px;
+    color: #ff6b6b;
+    font-family: var(--mono);
+    letter-spacing: 1px;
+  }
+
+  .nav-section {
+    padding: 6px 20px 4px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    cursor: pointer;
+    color: var(--text2);
+    font-size: 13px;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    background: var(--surface2);
+    color: var(--text);
+    border-left-color: var(--border);
+  }
+
+  .nav-item.active {
+    background: rgba(79,139,255,0.08);
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* MAIN */
+  .main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    background: rgba(15,17,23,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 50;
+  }
+
+  .topbar-path {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .topbar-path span { color: var(--text2); }
+
+  .topbar-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .topbar-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .update-tag {
+    padding: 2px 8px;
+    background: rgba(34,211,165,0.1);
+    border: 1px solid rgba(34,211,165,0.25);
+    border-radius: 3px;
+    font-size: 10px;
+    color: var(--accent3);
+    font-family: var(--mono);
+  }
+
+  .content {
+    padding: 40px;
+    max-width: 1000px;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 60px;
+    scroll-margin-top: 60px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* 级别标题：22px */
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 3px;
+    font-family: var(--mono);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* 卡片标题：16px */
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .card-title-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 400;
+  }
+
+  /* 链接文字（card-link）：13px */
+  .card-link {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79,139,255,0.3);
+    transition: border-color 0.15s, color 0.15s;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .card-link:hover {
+    color: #7aacff;
+    border-bottom-color: var(--accent);
+  }
+
+  /* ALERT BOXES */
+  /* 说明条：12px */
+  .alert {
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .alert-danger {
+    background: rgba(255,68,68,0.08);
+    border: 1px solid rgba(255,68,68,0.25);
+    color: #ffaaaa;
+  }
+
+  .alert-warn {
+    background: rgba(245,166,35,0.08);
+    border: 1px solid rgba(245,166,35,0.25);
+    color: #ffd47a;
+  }
+
+  .alert-info {
+    background: rgba(79,139,255,0.08);
+    border: 1px solid rgba(79,139,255,0.2);
+    color: #a8c4ff;
+  }
+
+  .alert-ok {
+    background: rgba(34,211,165,0.07);
+    border: 1px solid rgba(34,211,165,0.2);
+    color: #7eebd4;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+  }
+
+  /* 正文描述：14px */
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(42,48,80,0.5);
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s;
+  }
+
+  .check-box:hover { border-color: var(--accent); }
+  .check-box.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .check-box.checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+  }
+
+  .checklist li.done { color: var(--text3); text-decoration: line-through; }
+
+  /* STEP LIST */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+  }
+
+  /* 正文描述：14px */
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(42,48,80,0.4);
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+
+  /* INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 700px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+
+  .info-cell {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .info-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* 正文描述：14px */
+  .info-value {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .info-value.money {
+    color: var(--warn);
+    font-family: var(--mono);
+    font-size: 15px;
+  }
+
+  .info-value.law { color: var(--accent); font-family: var(--mono); }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  th {
+    background: var(--surface2);
+    color: var(--text3);
+    font-weight: 600;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid rgba(42,48,80,0.4);
+    color: var(--text2);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .td-danger { color: #ff8888; }
+  .td-warn { color: var(--warn); }
+  .td-ok { color: var(--accent3); }
+
+  /* TAG：标签文字 12px */
+  .tag {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: var(--mono);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-red { background: rgba(255,68,68,0.15); color: #ff8888; border: 1px solid rgba(255,68,68,0.2); }
+  .tag-blue { background: rgba(79,139,255,0.12); color: #7aacff; border: 1px solid rgba(79,139,255,0.2); }
+  .tag-green { background: rgba(34,211,165,0.1); color: var(--accent3); border: 1px solid rgba(34,211,165,0.2); }
+  .tag-orange { background: rgba(255,107,53,0.12); color: #ff9a70; border: 1px solid rgba(255,107,53,0.2); }
+  .tag-gray { background: rgba(255,255,255,0.04); color: var(--text2); border: 1px solid var(--border); }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, rgba(79,139,255,0.06) 0%, rgba(34,211,165,0.04) 100%);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  /* 正文描述：14px */
+  .hero-desc {
+    font-size: 14px;
+    color: var(--text2);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-stat-num {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  /* PRINT */
+  @media print {
+    .sidebar, .topbar { display: none; }
+    .main { margin-left: 0; }
+    .content { padding: 20px; }
+    body { background: white; color: #333; }
+  }
+
+  /* SCROLL */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="company">内部文件 / INTERNAL</div>
+    <div class="title">合規執行手冊</div>
+    <div class="badge">CONFIDENTIAL</div>
+  </div>
+
+  <div class="nav-section">概覽</div>
+  <a class="nav-item active" href="#overview"><span class="nav-dot" style="background:#4f8bff"></span>快速對照總表</a>
+  <a class="nav-item" href="#website"><span class="nav-dot" style="background:#22d3a5"></span>官網 &amp; 分站合規</a>
+
+  <div class="nav-section">業務線</div>
+  <a class="nav-item" href="#export"><span class="nav-dot" style="background:#f5a623"></span>汽車進出口</a>
+  <a class="nav-item" href="#domestic"><span class="nav-dot" style="background:#4f8bff"></span>國內銷售</a>
+  <a class="nav-item" href="#rental"><span class="nav-dot" style="background:#ff6b35"></span>租賃業務</a>
+  <a class="nav-item" href="#racing"><span class="nav-dot" style="background:#e040fb"></span>賽車企劃</a>
+  <a class="nav-item" href="#minpaku"><span class="nav-dot" style="background:#22d3a5"></span>民宿管理</a>
+
+  <div class="nav-section">通用事項</div>
+  <a class="nav-item" href="#accounting"><span class="nav-dot" style="background:#4f8bff"></span>會計 &amp; 稅務</a>
+  <a class="nav-item" href="#minefield"><span class="nav-dot" style="background:#ff4444"></span>高頻踩雷場景</a>
+  <a class="nav-item" href="#contacts"><span class="nav-dot" style="background:#22d3a5"></span>重要聯絡窗口</a>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-path">合規手冊 / <span>2025-04 版</span></div>
+    <div class="topbar-meta">
+      <div class="topbar-date">大阪・日本</div>
+      <div class="update-tag">LATEST</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">COMPLIANCE GUIDE · 合規執行手冊</div>
+      <h1>全業務線合規清單<br>大阪在地執行版</h1>
+      <div class="hero-desc">本文件面向公司全體人員，涵蓋汽車進出口、國內銷售、租賃、賽車企劃、民宿管理五大業務線的許認可（许可证资质）要求、日常操作規範、官網披露義務及高頻踩雷場景。照單執行，不踩紅線。</div>
+      <div class="hero-meta">
+        <div class="hero-stat"><span class="hero-stat-num">5</span><span class="hero-stat-label">業務線</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">8+</span><span class="hero-stat-label">許認可種別（资质种类）</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">12</span><span class="hero-stat-label">高頻踩雷場景</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">2024</span><span class="hero-stat-label">古物営業法（二手物品经营法）修正</span></div>
+      </div>
+    </div>
+
+    <!-- SECTION: OVERVIEW -->
+    <section class="section" id="overview">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(79,139,255,0.12)">📋</div>
+        <div>
+          <div class="section-title">快速對照總表</div>
+          <div class="section-subtitle">許認可（许可证资质）/ 申請窗口 / 費用 / 有效期</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>業務</th>
+              <th>必要許認可（所需资质）</th>
+              <th>申請窗口</th>
+              <th>費用</th>
+              <th>有效期</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>汽車進出口 / 國內買賣</td>
+              <td>古物商許可（二手物品经营许可，自動車商品目/汽车类目）</td>
+              <td>大阪府公安委員会（大阪府公安委员会）<br><small style="color:var(--text3)">→ 管轄警察署（辖区警察署）</small></td>
+              <td class="td-warn">¥19,000（収入証紙/印花税票）</td>
+              <td>永久（廃業まで/至停业）</td>
+              <td><span class="tag tag-red">必須先取得</span></td>
+            </tr>
+            <tr>
+              <td>中古車レンタル（二手车购入后出租）</td>
+              <td>古物商許可（二手物品经营许可）+ 自家用有償貸渡許可（自用车有偿租赁许可）</td>
+              <td>警察署 + 近畿運輸局（近畿运输局）</td>
+              <td class="td-warn">¥19,000 + ¥90,000</td>
+              <td>永久（需年次報告/年度申报）</td>
+              <td><span class="tag tag-red">兩者都要</span></td>
+            </tr>
+            <tr>
+              <td>レンタカー業（汽车租赁，自家用贷渡）</td>
+              <td>自家用自動車有償貸渡業許可（自用汽车有偿租赁业许可）</td>
+              <td>近畿運輸局（近畿运输局，大阪）</td>
+              <td class="td-warn">¥90,000（登録免許税/注册牌照税）</td>
+              <td>永久（每年5/31報告）</td>
+              <td><span class="tag tag-red">必須先取得</span></td>
+            </tr>
+            <tr>
+              <td>民宿（民泊新法/民宿新法）</td>
+              <td>住宅宿泊事業届出（民宿事业申报）</td>
+              <td>大阪市保健所（大阪市卫生局）<br><small style="color:var(--text3)">06-6647-0692</small></td>
+              <td>免費（消防工事費另计）</td>
+              <td>永久（隔月報告必须）</td>
+              <td><span class="tag tag-orange">上限180日</span></td>
+            </tr>
+            <tr>
+              <td>民宿（特区民泊/特区民宿，大阪限定）</td>
+              <td>特定認定（特定认定，国家戦略特区/国家战略特区）</td>
+              <td>大阪市/府 担当課（负责窗口）</td>
+              <td>行政書士（行政书士）費另计</td>
+              <td>认定后·更新制</td>
+              <td><span class="tag tag-green">日数無制限</span></td>
+            </tr>
+            <tr>
+              <td>民宿（旅館業/旅馆业）</td>
+              <td>旅館業法（旅馆业法）簡易宿所営業許可（简易旅宿营业许可）</td>
+              <td>大阪市保健所（大阪市卫生局）</td>
+              <td>消防・建築工事（消防/建筑工程费较高）</td>
+              <td>永久</td>
+              <td><span class="tag tag-green">最も安定</span></td>
+            </tr>
+            <tr>
+              <td>賽車企劃（中介・服务业）</td>
+              <td>法人登記（公司登记）的事业目的记载即可对应</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="tag tag-blue">定款確認</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION: WEBSITE -->
+    <section class="section" id="website">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(34,211,165,0.1)">🌐</div>
+        <div>
+          <div class="section-title">官網 &amp; 分站合規</div>
+          <div class="section-subtitle">放業務就夠？還是必須放牌照？分站需報備 URL 嗎？</div>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div><strong>核心答案：光放業務範圍不夠，必須同時顯示對應的許可証番號（许可证编号）。</strong> 只寫「我們做汽車買賣」而不顯示古物商許可証番號（二手物品经营许可证编号），2024年4月起即構成 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=324AC0000000108" target="_blank">古物営業法（二手物品经营法）↗</a> 違反。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📌 主公司官網 — 必须显示的全部项目</div>
+        <ul class="checklist" id="website-checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>法人名（公司名）或代表人姓名</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>営業所の住所（营业所地址，即登记住所）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>电话号码（必须是日本国内号码）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div><strong style="color:var(--warn)">【2024年新規（新规）】</strong> 古物商許可証番号（二手物品经营许可证编号）＋ 許可公安委員会名称（颁发机关名称，例：大阪府公安委員会/大阪府公安委员会）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>取扱古物の種類（经营二手物品种类，如：自動車商/汽车类）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=351AC0000000057" target="_blank">特定商取引法（特定商业交易法）↗</a> 相关信息披露页面（价格标示·付款方式·退货·取消政策）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>代表人或业务负责人姓名（法人且投放网络广告时）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>经营租车业务时：自家用自動車有償貸渡業（自用汽车有偿租赁业）许可证编号</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>经营民宿时：届出番号（申报编号）或旅館業許可番号（旅馆业许可证编号）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>プライバシーポリシー（隐私政策，个人信息处理方针）</div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔗 分站（民宿专用・租车专用网站）— URL報備（URL申报）是否必须</div>
+        <div class="alert alert-info" style="margin-bottom:12px">
+          <span class="alert-icon">ℹ️</span>
+          <div>古物商的古物営業（オークション代理/拍卖代理·中古車売買/二手车买卖）若在网站上进行，对警察有 <strong>URL届出義務（URL申报义务）</strong>。民宿·租车分站无申报义务，但各许可证编号的显示为必须。</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>网站类别</th>
+                <th>URL届出義務（URL申报义务）</th>
+                <th>许可证编号显示</th>
+                <th>特商法（特定商业交易法）标注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>主公司官网（含古物商业务）</td>
+                <td class="td-danger">必须（大阪府警）</td>
+                <td class="td-danger">古物商番号（二手物品许可证编号）</td>
+                <td class="td-danger">必须</td>
+              </tr>
+              <tr>
+                <td>民宿专用网站</td>
+                <td class="td-ok">不需要</td>
+                <td class="td-warn">建议显示届出番号（申报编号）</td>
+                <td class="td-danger">必须</td>
+              </tr>
+              <tr>
+                <td>租车专用网站</td>
+                <td class="td-ok">不需要</td>
+                <td class="td-warn">建议显示许可证编号</td>
+                <td class="td-danger">必须</td>
+              </tr>
+              <tr>
+                <td>赛车策划网站</td>
+                <td class="td-ok">不需要</td>
+                <td class="td-ok">无特殊要求</td>
+                <td class="td-danger">必须（服务提供类）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📝 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=351AC0000000057" target="_blank">特定商取引法（特定商业交易法）↗</a> 信息披露 — 全网站通用模板项目</div>
+        <ul class="steps">
+          <li>经营者名称・代表人姓名・地址・电话号码</li>
+          <li>服务费用（含税价格）及是否有附加费用</li>
+          <li>付款方式・付款时间</li>
+          <li>服务提供时间</li>
+          <li>取消・退款政策（民宿部分需特别详细说明）</li>
+          <li>订单确认前可查看并修正内容的最终确认页面（2022年6月起为必须）</li>
+        </ul>
+        <div class="alert alert-ok" style="margin-top:12px">
+          <span class="alert-icon">✅</span>
+          <div>与海外客户（中国大陆・台湾・香港居住者）的交易属于特商法的"適用除外（适用除外）"，海外客户专用页面无需标注特商法信息。但对日本居住的外国人仍适用，日文页面必须标注。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: EXPORT -->
+    <section class="section" id="export">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(245,166,35,0.1)">🚗</div>
+        <div>
+          <div class="section-title">汽車進出口業務</div>
+          <div class="section-subtitle">競拍代理 / 通關 / 報關 / JARC（日本汽车回收促进中心）手續</div>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="info-label">必要許可（所需许可）</div>
+          <div class="info-value law">古物商許可（自動車商）<br><small style="color:var(--text3);font-size:12px">二手物品经营许可（汽车类）</small></div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">申請費用</div>
+          <div class="info-value money">¥19,000（収入証紙/印花税票）</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">審査期間（审查期）</div>
+          <div class="info-value">约40天（文件无误的情况下）</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">保管場所（停车场地）</div>
+          <div class="info-value">至少2〜4台停车位（申请前必须确保）</div>
+        </div>
+      </div>
+
+      <div class="alert alert-danger">
+        <span class="alert-icon">🚫</span>
+        <div><strong>审查期间绝对禁止收购（買取）。</strong>审查中进行收购行为将违反 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=324AC0000000108" target="_blank">古物営業法（二手物品经营法）↗</a>，公司高管将丧失资格，一定期间内无法重新申请。已缴纳的¥19,000印花税票也不退还。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📦 輸出通関フロー（出口通关流程，按步骤执行）</div>
+        <ul class="steps">
+          <li><strong>竞拍成交后立即确认車検証（车辆检查证）的登记状态：</strong>一時抹消済み（已临时注销）→ 申请輸出予定届出証明書（出口预定申报证明书）/ 未抹消（未注销）→ 申请輸出抹消仮登録証明書（出口注销临时登记证明书）。两者有效期均为6个月。</li>
+          <li><strong>准备前往運輸支局（运输支局）所需文件：</strong>①車検証（车辆检查证）②ナンバープレート（车牌，需拆下）③印鑑証明書（印章证明，3个月以内）④実印（公章）⑤手数料¥350 ⑥委托他人代办时需附委任状（委托书）</li>
+          <li><strong>制作Invoice（商业发票）：</strong>必须注明厂商・车型・車台番号（车架号/VIN）・汽油/柴油区别・排气量。车架号须与证明书逐字核对，一字不差。</li>
+          <li><strong>彻底清洗车辆：</strong>完全清除泥土・植物・种子。车内及行李箱绝对不能放置Invoice以外的物品（否则有走私嫌疑风险）。</li>
+          <li><strong>订舱（船腹ブッキング）：</strong>RORO船（滚装船）或集装箱船。集装箱船时，船公司可能要求提供抽走汽油・拆除电瓶接线・冷媒处理的证明文件。</li>
+          <li><strong>搬入保稅區，将全套文件交给通关代理（乙仲）：</strong>輸出抹消証明書原本（出口注销证明原件）+ Invoice + Packing List（装箱单）+ 车辆全景照片 + 车架号特写照片</li>
+          <li><strong>向税关申报出口并取得许可：</strong>近年大阪港・神户港均加强了盗窃车辆核查。请预留充裕时间完成搬入。</li>
+          <li><strong>取得B/L（提单）：</strong>若已全额收款，可使用Surrender B/L（电放提单）方式处理。</li>
+          <li><strong>向JARC（公益財団法人 自動車リサイクル促進センター/日本汽车回收促进中心）申请回收费用返还：</strong>提交返还申请书 + 輸出抹消証明書副本 + 輸出許可書副本（含车架号）+ B/L副本（含车架号）。在JARC系统登记可降低手续费。</li>
+          <li><strong>申请自動車税（汽车税）退税：</strong>出口注销完成后，大阪府税事务所将寄发退款通知书（寄往旧登记地址）。按月份比例退还，务必办理。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📄 合同・文件核对清单（对客户）</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>代理競売契約書（竞拍代理合同）：代理手续费计算方式（成交价的%或固定金额）・最高竞价委托授权・未成交时的处理方式</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>货款支付时间及方式（银行汇款・收款账户等）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>客户拒付时的损害赔偿条款</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>确认目的国的进口规定及年限限制（各目的地有所不同）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>与客户事先确认是否需要装船前检验证书（JAAI/JEVIC/EAA等）</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: DOMESTIC -->
+    <section class="section" id="domestic">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(79,139,255,0.1)">🏪</div>
+        <div>
+          <div class="section-title">國內銷售業務</div>
+          <div class="section-subtitle">試乘 / 車況評估 / 過戶 / 保険</div>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div><strong>修復歴（事故骨架修复记录）的告知为必须。</strong>根据日本法院实务，隐瞒修复记录被认定为欺诈，买方可撤销合同的案例很多。必须以书面告知并取得客户签名。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 购车合同必须记载的事项</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>车辆基本信息（厂商・车型・年份・車台番号/车架号・里程）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>修復歴（事故骨架修复记录）有无（骨架部件・浸水记录・火灾记录）＋ 客户签名栏</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>法定点検整備記録簿（法定检验维修记录本）有无</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>销售价格・消费税金额</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>付款方式及期限</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>名義変更（移転登録）（过户/移转登记）的负责人及完成期限</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>瑕疵担保（瑕疵担保责任）的范围及免责条款</div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">⚠️ 保险介绍的注意事项</div>
+        <div class="alert alert-danger">
+          <span class="alert-icon">🚫</span>
+          <div>"销售"保险需要保险代理店资质。无资质受理保险申请并收取费用将违反 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=407AC0000000105" target="_blank">保険業法（保险业法）↗</a>。仅限"推荐・介绍"。实际合同须通过合作代理店签订。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📝 名義変更（過戶，移転登録）代办手续</div>
+        <ul class="steps">
+          <li>取得車主（売主/卖方）委任状（委托书，需盖実印/公章）+ 印鑑証明書（印章证明，3个月以内）</li>
+          <li>新オーナー（買主/买方）的印鑑証明書（印章证明）+ 住民票（居住证明）或登記事項証明書（法人的话需提供公司登记事项证明）</li>
+          <li>前往大阪管辖運輸支局（运输支局，住吉区・大阪陆运局）申请</li>
+          <li>自動車税（汽车税）过户通知（过户完成后向大阪府税事务所办理）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: RENTAL -->
+    <section class="section" id="rental">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(255,107,53,0.1)">🔑</div>
+        <div>
+          <div class="section-title">租賃業務（レンタカー/租车）</div>
+          <div class="section-subtitle">自家用自動車有償貸渡業許可（自用汽车有偿租赁业许可）/ 日租・週租・月租</div>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="info-label">必要許可（所需许可）</div>
+          <div class="info-value law">自家用自動車有償貸渡業許可<br><small style="color:var(--text3);font-size:12px">（自用汽车有偿租赁业许可）</small></div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">登録免許税（注册牌照税）</div>
+          <div class="info-value money">¥90,000</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">申請窓口（申请窗口）</div>
+          <div class="info-value">近畿運輸局（近畿运输局，大阪）</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">処理期間（处理期）</div>
+          <div class="info-value">约1个月</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">車庫要件（停车场要求）</div>
+          <div class="info-value">距营业所直线2km以内</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">年次報告（年度报告）</div>
+          <div class="info-value money">每年5/31前必须提交</div>
+        </div>
+      </div>
+
+      <div class="alert alert-danger">
+        <span class="alert-icon">🚫</span>
+        <div><strong>取得「わ」ナンバー（"わ"字车牌/租车专用车牌）前进行有偿出租违反 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=326AC0000000183" target="_blank">道路運送法（道路运输法）↗</a>。</strong>取得许可后需另行办理"わ"字车牌变更登记。使用普通车牌收费出租即为违法。最高罚款¥100万＋车辆使用禁止命令。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🌏 外国人客户出租时的必须确认事项</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>核查国際運転免許証（国际驾驶执照，须为日内瓦公约缔约国签发）原件 + 留存副本</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>确认日文訳文（日文译本，执照仅有外文时须提供）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div><strong style="color:var(--danger)">仅持中国大陆（PRC）发行驾驶执照时：禁止出租。</strong>日中之间无相互承认协定。台湾・香港请另行确认。</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>台湾中華民国運転免許証（台湾中华民国驾驶执照）：有日文訳文（如JAF翻译）则可出租</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>取得貸渡約款（出租合同，日文＋客户母语）的签名</div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📄 貸渡約款（出租合同）必须包含的项目</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>使用目的・使用范围（仅限日本国内）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>发生事故时的通知义务及处理程序</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>保险适用范围及免赔额</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>归还时间・续租费用・延误违约金</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>禁止行为（転貸し/转租・改装・酒驾等）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>附上收费标准（按车型及时段区分）</div></li>
+        </ul>
+        <div class="alert alert-info" style="margin-top:12px">
+          <span class="alert-icon">ℹ️</span>
+          <div>国土交通省（国土交通省/国土部）没有标准约款模板。由于须作为申请文件提交，委托行政书士代为制作最为稳妥。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📅 年次報告（年度报告，每年5月31日截止）</div>
+        <ul class="steps">
+          <li>制作上一年度（前年4月1日〜当年3月31日）的「貸渡実績報告書（租赁实绩报告书）」</li>
+          <li>制作「事務所別車種別配置車両数一覧表（各营业所·车型别·配置车辆数一览表）」</li>
+          <li>提交至近畿運輸局（近畿运输局）（部分情况可在线提交，请确认最新方式）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: RACING -->
+    <section class="section" id="racing">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(224,64,251,0.1)">🏎️</div>
+        <div>
+          <div class="section-title">賽車企劃業務</div>
+          <div class="section-subtitle">車隊媒合 / 翻訳 / 訓練 / 後勤 / FJ青訓計畫</div>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ️</span>
+        <div>赛车策划以服务提供业（中介・咨询・口译等）形式运营时，原则上无需特别许可证。但以下各项可能产生个别法规限制。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">⚙️ 各业务内容的合规确认</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>服务内容</th><th>法规注意事项</th><th>应对措施</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>车队席位撮合（FIA-F4・SF Lights等）</td>
+                <td>可能属于 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=327AC0000000239" target="_blank">旅行業法（旅行业法）↗</a> 规定的「旅行サービス手配業（旅行服务安排业）」</td>
+                <td class="td-warn">建议向観光庁（观光厅）事前咨询</td>
+              </tr>
+              <tr>
+                <td>口译・翻译服务</td>
+                <td>无需特别资质。合同内容的准确性是民事责任的重点</td>
+                <td class="td-ok">在合同中明确免责及责任限制条款</td>
+              </tr>
+              <tr>
+                <td>模拟器训练・实车测试安排</td>
+                <td>须与设施明确划分安全责任</td>
+                <td class="td-warn">必须与设施签署免责协议</td>
+              </tr>
+              <tr>
+                <td>住宿・交通安排</td>
+                <td>需确认 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=327AC0000000239" target="_blank">旅行業法↗</a> 「旅行サービス手配業（旅行服务安排业）」的注册要求</td>
+                <td class="td-warn">未注册而收取报酬存在违法风险</td>
+              </tr>
+              <tr>
+                <td>FJ/F4 青训计划（未成年人）</td>
+                <td>必须有保護者同意書（监护人同意书）・緊急連絡先（紧急联系人）・傷害保険（伤害保险）</td>
+                <td class="td-danger">务必取得监护人书面签名</td>
+              </tr>
+              <tr>
+                <td>代收赛事报名费</td>
+                <td>可能抵触 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=421AC0000000059" target="_blank">資金決済法（资金结算法）↗</a> 的「資金移動業（资金转移业）」规定</td>
+                <td class="td-warn">建议咨询律师</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 服务合同必须包含的条款</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>明确服务的具体范围及除外事项</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>费用・付款时间・取消时的退款政策</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>比赛中发生意外・伤害的免责条款</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>因状况不佳・天气等原因取消时的处理方式</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>未成年人须有监护人签字盖章及緊急連絡先（紧急联系人）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>确认傷害保険（伤害保险）加入情况（我方或客户方）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>个人信息（车手资料等）处理同意</div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🌐 赛车策划网站宣传文案合规确认</div>
+        <div class="alert alert-warn" style="margin-bottom:10px">
+          <span class="alert-icon">⚠️</span>
+          <div><strong>禁止夸大宣传。</strong>「必ず上達する（保证进步）」「確実に車隊席位が得られる（确保取得车队席位）」等保证性表述不可使用。属于 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=351AC0000000057" target="_blank">特定商取引法（特定商业交易法）↗</a> 及景品表示法（景品标示法）的规制对象。</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>禁止用语示例（NG）</th><th>合规用语示例（OK）</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-danger">「確実に車隊席位が確保できます（确保为您取得车队席位）」</td>
+                <td class="td-ok">「豊富なネットワークを活かして最適な車隊へのご紹介をサポートします（借助丰富的人脉网络，为您提供最合适的车队引荐支持）」</td>
+              </tr>
+              <tr>
+                <td class="td-danger">「初心者でも必ずプロになれる（初学者也一定能成为专业赛手）」</td>
+                <td class="td-ok">「FJ/F4 ジュニアカリキュラムで段階的に実力を養成します（通过FJ/F4青训课程阶段性培养实力）」</td>
+              </tr>
+              <tr>
+                <td class="td-danger">「言語の壁を完全に解消（完全消除语言障碍）」</td>
+                <td class="td-ok">「専門翻訳者が技術コミュニケーションをサポート（专业译员支持技术沟通）」</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔖 旅行サービス手配業（旅行服务安排业）注意事项（重要）</div>
+        <div class="alert alert-danger">
+          <span class="alert-icon">🚫</span>
+          <div>「为他人」「收取报酬」安排住宿・交通时，依据 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=327AC0000000239" target="_blank">旅行業法（旅行业法）↗</a>，极有可能需要进行「旅行サービス手配業（旅行服务安排业）」注册（向都道府县知事注册）。未注册经营即违反旅行业法。强烈建议就实际业务内容事先向行政书士或観光庁（观光厅）咨询。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: MINPAKU -->
+    <section class="section" id="minpaku">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(34,211,165,0.1)">🏠</div>
+        <div>
+          <div class="section-title">民宿管理・運營業務</div>
+          <div class="section-subtitle">民泊新法（民宿新法）/ 特区民泊 / 旅館業法（旅馆业法）— 大阪特有注意事项</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📊 大阪可选的3种运营路线比较</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>路线</th><th>手続き種別（手续类型）</th><th>営業日数（营业天数）</th><th>窓口（申请窗口）</th><th>推荐度</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A：民泊新法（民宿新法）</strong><br><small><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=429AC0000000065" target="_blank">住宅宿泊事業法↗</a></small></td>
+                <td>届出（申报，相对简单）</td>
+                <td class="td-warn">最多180日/年</td>
+                <td>大阪市保健所（大阪市卫生局）</td>
+                <td><span class="tag tag-gray">副业・小规模适用</span></td>
+              </tr>
+              <tr>
+                <td><strong>B：特区民泊（特区民宿）</strong><br><small>大阪限定</small></td>
+                <td>認定（认定，难度较高）</td>
+                <td class="td-ok">无天数限制<br>最短2泊3日〜</td>
+                <td>大阪市担当課（负责窗口）</td>
+                <td><span class="tag tag-green">收益性高</span></td>
+              </tr>
+              <tr>
+                <td><strong>C：旅館業法（旅馆业法）</strong><br><small><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=323AC0000000138" target="_blank">旅館業法↗</a> 簡易宿所（简易旅宿）</small></td>
+                <td>許可（许可，最为稳定）</td>
+                <td class="td-ok">无限制</td>
+                <td>大阪市保健所（大阪市卫生局）</td>
+                <td><span class="tag tag-blue">长期经营适用</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">✅ 民泊新法（路线A）届出核对清单 &nbsp;<a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=429AC0000000065" target="_blank">↗ 住宅宿泊事業法官方法文</a></div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>通过民泊制度ポータルサイト（民泊制度门户网站）在线申报（须预约：06-6647-0692）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>物件毗邻宽度4m以上道路的承诺书（様式5/样式5）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>安全措置（安全措施）核对清单（様式3/样式3）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>安装業務用自動火災報知設備（商用自动火灾报警设备，不可使用住宅用，费用通常超过100万日元）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>公寓物件：确认管理規約（管理规约）・賃貸借契約書（租赁合同）是否有民宿禁止条款 + 取得管理組合（管委会）批准书</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>家主不在型（房东不在型）须与国土交通大臣登録（国土交通省注册）的「住宅宿泊管理業者（民宿管理公司）」签订委托合同（须24小时响应）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>提前向周边居民说明（书面告知设施信息及投诉联系方式）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>制作苦情対応手引書（投诉处理手册，记载处理噪音・垃圾等问题的方法）</div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📅 定期報告（隔月提交，必须）</div>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <div>每年2月・4月・6月・8月・10月・12月各15日前，需向大阪市报告前2个月的住宿实绩。<strong>即使入住人数为零也须提交报告。</strong>忘记提交将受行政指导，严重时可能注销申报资格。</div>
+        </div>
+        <ul class="steps">
+          <li>登录民泊制度ポータルサイト（民泊制度门户网站）</li>
+          <li>输入该物件前2个月的宿泊者数（住宿人数）・宿泊日数（住宿天数）</li>
+          <li>确认提交完成并保存截图（作为记录留存）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🗑️ 垃圾处理（高频踩雷点）&nbsp;<a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=345AC0000000137" target="_blank">↗ 廃棄物処理法官方法文</a></div>
+        <div class="alert alert-danger">
+          <span class="alert-icon">🚫</span>
+          <div>住客产生的垃圾属于「事業系ゴミ（事业性垃圾）」。<strong>绝对不能混入住宅区的一般垃圾投放。</strong>依据 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=345AC0000000137" target="_blank">廃棄物処理法（废弃物处理法）↗</a>，须委托持有废弃物处理业许可的业者进行收集（违反则受行政指导）。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🏨 旅館業法（路线C）申请时的追加确认事项 &nbsp;<a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=323AC0000000138" target="_blank">↗ 旅館業法官方法文</a></div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>确认设施周边300m内无学校・保育所（托儿所）・公园等</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>设置玄関帳場（前台/Front desk）或在设施1,000m内确保有管理事務所（管理事务所）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>确认符合建築基準法（建筑基准法）・消防法（消防法）的规定（建议提前咨询保健所）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>准备平面図（平面图）・配置図（配置图）・立面図（立面图）・給排水設備図（给排水设备图）（旧物件须提前确认是否有图纸）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>在申请前提交建築計画届出書（建筑计划申报书）（须在施工开始前提交）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>取得近畿ブロック（近畿地区）「民泊マーク（民宿标识）」（非强制，但对周边关系有帮助）</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: ACCOUNTING -->
+    <section class="section" id="accounting">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(79,139,255,0.1)">💴</div>
+        <div>
+          <div class="section-title">會計 &amp; 稅務</div>
+          <div class="section-subtitle">消費税（消费税）/ インボイス制度（发票制度）/ 雇用（雇用）</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">消費税（消费税）・インボイス（发票/适格请求书）制度 &nbsp;<a class="card-link" href="https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/invoice.htm" target="_blank">↗ 国税厅官方说明</a></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>项目</th><th>内容</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>課税事業者の基準（成为课税业者的标准）</td>
+                <td>基準期間（2年前/两年前的会计年度）的課税売上（应税销售额）超1,000万日元，则后年起成为課税事業者（课税业者）</td>
+              </tr>
+              <tr>
+                <td>輸出売上の消費税（出口销售的消费税）</td>
+                <td class="td-ok">二手车出口消费税为0%（輸出免税/出口免税）。但须保存免税証明書類（免税证明文件）。</td>
+              </tr>
+              <tr>
+                <td>インボイス（適格請求書/适格请求书）</td>
+                <td class="td-warn">2023年10月起实施。B to B交易必须使用。须向税务署完成「適格請求書発行事業者（适格请求书发行事业者）」的注册。</td>
+              </tr>
+              <tr>
+                <td>民泊収入の区分（民宿收入会计分类）</td>
+                <td>以管理業者（管理业者）身份收取时，通常归类为「事業所得（事业所得）」（非不動産所得/不动产所得）。请咨询税理士（税务师）确认。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">👤 雇用外国人时的必须手续</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>办理雇用保険（雇用保险）・社会保険（社会保险）加入手续</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>向ハローワーク（Hello Work/公共职业安定所）提交「外国人雇用状況届出（外国人雇用状况申报）」（每次雇用及离职均须申报）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>核查在留資格（居留资格，确认是否为可就业的居留资格）</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>工资条（給与明細）及預扣税款（源泉徴収）的妥善处理</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: MINEFIELD -->
+    <section class="section" id="minefield">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(255,68,68,0.1)">💣</div>
+        <div>
+          <div class="section-title">高頻踩雷場景一覽</div>
+          <div class="section-subtitle">照這張表check，每个业务开始前确认一遍</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>踩雷場景</th>
+              <th>法律後果</th>
+              <th>預防措施</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>在取得古物商許可（二手物品经营许可）前参与拍卖竞拍或进货</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=324AC0000000108" target="_blank">古物営業法↗</a>違反・罚款・公司高管丧失资格（5年）</td>
+              <td class="td-ok">在许可证下发前，一切禁止收购</td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>网站上未展示古物商許可証番号（二手物品许可证编号）</td>
+              <td class="td-danger">2024年新规违反・行政指导→营业停止命令</td>
+              <td class="td-ok">在所有网站首页显示许可证编号</td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>向仅持中国大陆驾驶执照的客户出租汽车</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=335AC0000000105" target="_blank">道路交通法↗</a>違反・事故时保险拒绝理赔</td>
+              <td class="td-ok">出租前确认驾驶执照，中国大陆绝对不可</td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>使用普通车牌（非「わ」字/租车专用车牌）进行有偿出租</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=326AC0000000183" target="_blank">道路運送法↗</a>違反・罚款¥100万・车辆使用禁止</td>
+              <td class="td-ok">取得许可后立即办理「わ」字车牌变更登记</td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Invoice（商业发票）上车架号有误（哪怕一个字符）</td>
+              <td class="td-warn">海关报关停止・船期延误・产生额外费用</td>
+              <td class="td-ok">义务进行双重确认，发送前必须与证明书核对</td>
+            </tr>
+            <tr>
+              <td>06</td>
+              <td>民宿住宿天数超过180天（民泊新法/民宿新法）</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=323AC0000000138" target="_blank">旅館業法↗</a>違反・营业停止・罚款</td>
+              <td class="td-ok">在管理系统中每月统计天数，于170天时设置警告</td>
+            </tr>
+            <tr>
+              <td>07</td>
+              <td>忘记提交民宿定期报告（每隔月15日）</td>
+              <td class="td-warn">行政指导→可能导致申报注销</td>
+              <td class="td-ok">在日历中设置6次提醒</td>
+            </tr>
+            <tr>
+              <td>08</td>
+              <td>将民宿垃圾混入住宅区一般垃圾投放</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=345AC0000000137" target="_blank">廃棄物処理法↗</a>違反・引发邻里纠纷</td>
+              <td class="td-ok">提前与持证业者签订事业性垃圾处理合同</td>
+            </tr>
+            <tr>
+              <td>09</td>
+              <td>不披露修复记录（事故记录）出售车辆</td>
+              <td class="td-danger">被认定为欺诈・合同撤销・损害赔偿</td>
+              <td class="td-ok">书面告知，每次必须取得客户签名</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>无保险代理资质受理保险申请并收取费用</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=407AC0000000105" target="_blank">保険業法↗</a>違反</td>
+              <td class="td-ok">仅限「推薦のみ（推荐介绍）」，合同须通过合作代理店签订</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>未提交租车业务年度报告（5/31截止）</td>
+              <td class="td-warn">行政指导・许可证撤销风险</td>
+              <td class="td-ok">设置5月15日提醒，确保按时提交</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>从事住宿/交通安排收取报酬但未注册旅行サービス手配業（旅行服务安排业）</td>
+              <td class="td-danger"><a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=327AC0000000239" target="_blank">旅行業法↗</a>違反</td>
+              <td class="td-ok">在启动赛车策划的住宿/交通服务前咨询行政書士（行政书士）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION: CONTACTS -->
+    <section class="section" id="contacts">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(34,211,165,0.1)">📞</div>
+        <div>
+          <div class="section-title">重要聯絡窗口</div>
+          <div class="section-subtitle">发生问题时，第一时间打这里</div>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="info-label">古物商許可（汽車買賣）</div>
+          <div class="info-value">管轄警察署（辖区警察署）生活安全課（生活安全科）</div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">大阪市内→各区警察署</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">レンタカー業許可（租车业许可）</div>
+          <div class="info-value">近畿運輸局（近畿运输局）自動車技術安全部（汽车技术安全部）</div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">06-6949-6438</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">民泊届出・旅館業許可（民宿申报/旅馆业许可）</div>
+          <div class="info-value">大阪市保健所（大阪市卫生局）環境衛生監視課（环境卫生监察科）</div>
+          <div style="color:var(--accent);font-family:var(--mono);font-size:13px;margin-top:4px">06-6647-0692（需预约）</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">民泊制度コールセンター（民宿制度咨询热线）</div>
+          <div class="info-value" style="font-family:var(--mono)">0570-041-389</div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">全国共通 ナビダイヤル（全国统一导航电话）</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">JARC（リサイクル料金返還/汽车回收费用返还）</div>
+          <div class="info-value">公益財団法人 自動車リサイクル促進センター<br><small style="color:var(--text3);font-size:12px">（日本汽车回收促进中心）</small></div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">jarc.or.jp 在线注册</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">輸出抹消登録（出口注销登记）</div>
+          <div class="info-value">大阪運輸支局（大阪运输支局，住之江区）</div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">平日のみ（仅工作日，周六日休）</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">旅行業・手配業の相談（旅行业/服务安排业咨询）</div>
+          <div class="info-value">近畿運輸局（近畿运输局）観光部観光企画課（观光部观光策划科）</div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">06-6949-6505</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">消費税・インボイス（消费税/发票制度）</div>
+          <div class="info-value">大阪国税局 / 管轄税務署（辖区税务署）</div>
+          <div style="color:var(--text3);font-size:12px;margin-top:4px">建议通过税理士（税务师）处理</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <div class="card-title">🔖 文件更新・維護規則</div>
+        <ul class="checklist">
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>将各許認可証（许可证）的有效期及更新截止日期列表，每年确认一次</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>每半年检查一次 <a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=324AC0000000108" target="_blank">古物営業法↗</a>・<a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=326AC0000000183" target="_blank">道路運送法↗</a>・<a class="card-link" href="https://elaws.e-gov.go.jp/document?lawid=429AC0000000065" target="_blank">住宅宿泊事業法↗</a> 的修订动态</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>本文件每年至少审阅一次，如有变更则通知全员</div></li>
+          <li><span class="check-box" onclick="toggleCheck(this)"></span><div>新增服务前，必须事先咨询行政書士（行政书士）・弁護士（律师）</div></li>
+        </ul>
+      </div>
+
+      <div style="margin-top:30px;padding:16px 20px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--text3);line-height:1.8">
+        <strong style="color:var(--text2)">免責事項（免责声明）</strong><br>
+        本文件仅为实务参考信息，不构成法律意见。各许认可的申请及手续，请务必向管辖行政窗口或行政書士（行政书士）・弁護士（律师）等专业人士确认。法规随时可能修订，最新信息请以各官署官方网站为准。<br>
+        制作日期：2025年4月 ／ 适用地区：大阪市・大阪府
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  const li = el.closest('li');
+  if (li) li.classList.toggle('done');
+}
+
+// Sidebar active state
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === '#' + current) item.classList.add('active');
+  });
+});
+
+// Smooth scroll
+navItems.forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(item.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
